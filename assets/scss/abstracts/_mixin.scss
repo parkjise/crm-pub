@@ -1,0 +1,48 @@
+// @import 충돌날 위험이 있음
+// @use  @use '.' as name
+// @foward
+@mixin flex($isDirection:true,$justifyContent:'start',$alignItem:"center",$gap:0){
+  display:flex;
+  @if $isHorizontal == true{
+    flex-direction: row;
+  } @else {
+    flex-direction: column;
+  }
+
+  @if $justifyContent ==  "start"{
+    justify-content: flex-start;
+  } @else if $justifyContent ==  "center" {
+      justify-content: center;
+  } @else if $justifyContent ==  "end"{
+      justify-content: flex-end;
+  } @else {
+      justify-content: flex-start;
+  }
+  @if $alignItem == "center"{
+    align-items: center;
+  } @else if $alignItem == "start"{
+      align-items: flex-start;
+  } @else if $alignItem == "end"{
+      align-items: flex-end;
+  } @else {
+      align-items: center;
+  }
+  gap:$gap;
+}
+
+
+.flex{
+  @include flex(false,'end','start',10px)
+}
+
+@mixin position($p:absolute,$t:null,$b:null,$l:null,$r:null){
+  position: $p;
+  top:$t;
+  bottom:$b;
+  left:$l;
+  right:$r;
+}
+
+.fixed{
+  @include position(fixed,$t:30px,$b:40px)
+}
