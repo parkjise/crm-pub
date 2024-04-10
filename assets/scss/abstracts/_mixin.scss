@@ -1,3 +1,4 @@
+@use 'variables';
 // @import 충돌날 위험이 있음
 // @use  @use '.' as name
 // @foward
@@ -46,3 +47,29 @@
 .fixed{
   @include position(fixed,$t:30px,$b:40px)
 }
+
+@mixin ellipsis($line:1){
+  @if ($line == 1){
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  }
+}
+/*
+@include ellipsis;
+@include ellipsis(n);
+*/
+
+@mixin mobile {
+  @media (max-width:#{$breakpoint-mobile}){
+    @content
+  }
+}
+
