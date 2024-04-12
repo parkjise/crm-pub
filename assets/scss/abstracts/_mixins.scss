@@ -4,7 +4,7 @@
 // @foward
 @mixin flex($isDirection:true,$justifyContent:'start',$alignItem:"center",$gap:0){
   display:flex;
-  @if $isHorizontal == true{
+  @if $isDirection == true{
     flex-direction: row;
   } @else {
     flex-direction: column;
@@ -30,7 +30,6 @@
   }
   gap:$gap;
 }
-
 
 .flex{
   @include flex(false,'end','start',10px)
@@ -66,6 +65,14 @@
 @include ellipsis;
 @include ellipsis(n);
 */
+@mixin grid($rows:null,$columns:null,$gap:null,$row-gap:null,$column-gap:null){
+  display:grid;
+  gap:$gap;
+  row-gap:$row-gap;
+  column-gap:$column-gap;
+  grid-template-rows:$rows; 
+  grid-template-columns:$columns;
+}
 
 @mixin mobile {
   @media (max-width:#{$breakpoint-mobile}){
